@@ -1,14 +1,10 @@
-# Use official Java image
 FROM openjdk:17-jdk-slim
 
-# Set working directory
 WORKDIR /app
 
-# Copy project files
 COPY . .
 
-# Build project
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Run jar file
-CMD ["java","-jar","target/*.jar"]
+CMD ["java","-jar","target/ecommerce-backend-0.0.1-SNAPSHOT.jar"]
